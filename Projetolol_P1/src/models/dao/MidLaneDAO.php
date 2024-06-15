@@ -33,4 +33,51 @@ class MidLaneDAO{
             return 0;
         }
     }
+
+    public function consulta(){
+        try{
+            $sql = "SELECT * FROM midlane";
+            return $this->conect->getConect()->query($sql);
+        } catch (\Exception $e){
+            return 0;
+        }
+    }
+
+    public function consultaid($idMid){
+        try{
+            $sql = "SELECT * FROM midlane WHERE idMid = :idMid";
+            $p = $this->conect->getConect()->prepare($sql);
+            $p->bindValue(":idMid", $idMid);
+            $p->execute();
+            return $p->fetch();
+        } catch (\Exception $e){
+            return 0;
+        }
+    }
+
+    public function update(Midlane $midlane) {
+        try{
+            $sql = "UPDATE midlane SET nomeCamp = :nomeCamp, item = :item, counterCamp = :counterCamp, idJg = :idJg WHERE idMid = :idMid";
+            $p = $this->conect->getConect()->prepare($sql);
+            $p->bindValue(":nomeCamp", $midlane->getNomeCamp());
+            $p->bindValue(":item", $midlane->getItem());
+            $p->bindValue(":counterCamp", $midlane->getCounterCamp());
+            $p->bindValue(":idJg", $midlane->getIdJg());
+            $p->bindValue(":idMid", $midlane->getIdMid());
+            return $p->execute();
+        }catch(\Exception $e){
+            return 0;
+        }
+    }
+
+    public function apagar($idMid){
+        try {
+            $sql = "DELETE FROM midlane WHERE idMid = :idMid";
+            $p = $this->conect->getConect()->prepare($sql);
+            $p->bindValue(":idMid", $idMid);
+            return $p->execute();
+        } catch (\Exception $e) {
+            return 0;
+        }
+    }
 }

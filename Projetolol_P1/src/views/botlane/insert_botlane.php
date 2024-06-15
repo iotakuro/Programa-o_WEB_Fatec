@@ -15,20 +15,20 @@
     <form action="/botlane/new" method="post">
       <div class="row">
         <div class="col-8 mt-4">
-          <label for="nome" class="form-label">Nome:</label>
-          <input type="text" name="nome" class="form-control" required>
+          <label for="nomeCamp" class="form-label">Nome:</label>
+          <input type="text" name="nomeCamp" class="form-control" required>
         </div>
         <div class="col-8 mt-4">
-          <label for="items" class="form-label">Items:</label>
-          <input type="text" name="items" class="form-control" required>
+          <label for="item" class="form-label">Items:</label>
+          <input type="text" name="item" class="form-control" required>
         </div>
         <div class="col-8 mt-4">
-          <label for="counters" class="form-label">Counter:</label>
-          <input type="text" name="counters" class="form-control" required>
+          <label for="counterCamp" class="form-label">Counter:</label>
+          <input type="text" name="counterCamp" class="form-control" required>
         </div>
         <div class="col-8 mt-4">
-          <label for="id_jungle" class="form-label">ID do Jungle:</label>
-          <input type="text" name="id_jungle" class="form-control" required>
+          <label for="idJg" class="form-label">ID do Jungle:</label>
+          <input type="text" name="idJg" class="form-control" required>
         </div>
       </div>
       <div class="row">

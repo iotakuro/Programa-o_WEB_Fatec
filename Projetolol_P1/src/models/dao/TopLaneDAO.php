@@ -33,4 +33,51 @@ class ToplaneDAO{
             return 0;
         }
     }
+
+    public function consulta(){
+        try{
+            $sql = "SELECT * FROM toplane";
+            return $this->conect->getConect()->query($sql);
+        } catch (\Exception $e){
+            return 0;
+        }
+    }
+
+    public function consultaid($idTop){
+        try{
+            $sql = "SELECT * FROM toplane WHERE idTop = :idTop";
+            $p = $this->conect->getConect()->prepare($sql);
+            $p->bindValue(":idTop", $idTop);
+            $p->execute();
+            return $p->fetch();
+        } catch (\Exception $e){
+            return 0;
+        }
+    }
+
+    public function update(Toplane $toplane) {
+        try{
+            $sql = "UPDATE toplane SET nomeCamp = :nomeCamp, item = :item, counterCamp = :counterCamp, idJg = :idJg WHERE idTop = :idTop";
+            $p = $this->conect->getConect()->prepare($sql);
+            $p->bindValue(":nomeCamp", $toplane->getNomeCamp());
+            $p->bindValue(":item", $toplane->getItem());
+            $p->bindValue(":counterCamp", $toplane->getCounterCamp());
+            $p->bindValue(":idJg", $toplane->getIdJg());
+            $p->bindValue(":idTop", $toplane->getIdTop());
+            return $p->execute();
+        }catch(\Exception $e){
+            return 0;
+        }
+    }
+
+    public function apagar($idTop){
+        try {
+            $sql = "DELETE FROM toplane WHERE idTop = :idTop";
+            $p = $this->conect->getConect()->prepare($sql);
+            $p->bindValue(":idTop", $idTop);
+            return $p->execute();
+        } catch (\Exception $e) {
+            return 0;
+        }
+    }
 }
